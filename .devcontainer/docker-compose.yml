@@ -1,0 +1,95 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    volumes:
+      - ..:/workspace
+      - node_modules:/workspace/node_modules
+      - codex_state:/root/.codex
+      - codex_cli:/opt/codex
+      - agent_skills:/root/.agents
+      - git_config:/root/.config/git
+
+    env_file:
+      - ../.env
+
+    environment:
+      REDIS_URL: redis://redis:6379
+      CODEX_HOME: /root/.codex
+      GIT_CONFIG_GLOBAL: /root/.config/git/config
+      CI_ENVIRONMENT: development
+      app.baseURL: http://localhost:${PORT:-8080}/
+      database.default.DBDriver: MySQLi
+      database.default.hostname: db
+      database.default.database: ${DEV_DATABASE_NAME:-codeigniter_app}
+      database.default.username: ${DEV_MYSQL_USER:-codeigniter}
+      database.default.password: ${DEV_MYSQL_PASSWORD:-codeigniter}
+      database.default.port: 3306
+
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+    ports:
+      - '${PORT:-8080}:${PORT:-8080}'
+
+    command: sleep infinity
+
+  db:
+    image: mysql:8.4
+
+    environment:
+      MYSQL_DATABASE: ${DEV_DATABASE_NAME:-codeigniter_app}
+      MYSQL_USER: ${DEV_MYSQL_USER:-codeigniter}
+      MYSQL_PASSWORD: ${DEV_MYSQL_PASSWORD:-codeigniter}
+      MYSQL_ROOT_PASSWORD: ${DEV_MYSQL_ROOT_PASSWORD:-development-root}
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - MYSQL_PWD="$$MYSQL_PASSWORD" mysql --protocol=TCP --host=127.0.0.1 --user="$$MYSQL_USER" --database="$$MYSQL_DATABASE" --execute="SELECT 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  redis:
+    image: redis:7-alpine
+
+    ports:
+      - '6379:6379'
+
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  phpmyadmin:
+    image: phpmyadmin:5
+
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+
+    ports:
+      - '127.0.0.1:8081:80'
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  node_modules:
+  codex_state:
+  codex_cli:
+  agent_skills:
+  git_config:
+  mysql_data:

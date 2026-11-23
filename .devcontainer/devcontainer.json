@@ -1,0 +1,38 @@
+{
+  "name": "CodeIgniter 4 App Development",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "root",
+  "remoteEnv": {
+    "CODEX_HOME": "/root/.codex",
+    "PATH": "/opt/codex/bin:/workspace/node_modules/.bin:${containerEnv:PATH}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "bmewburn.vscode-intelephense-client",
+        "xdebug.php-debug",
+        "humao.rest-client",
+        "postman.postman-for-vscode",
+        "github.vscode-github-actions",
+        "usernamehw.errorlens",
+        "openai.chatgpt"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.watcherExclude": {
+          "**/.git/**": true
+        }
+      }
+    }
+  },
+  "portsAttributes": {
+    "8080": { "label": "CodeIgniter 4", "onAutoForward": "notify" },
+    "8081": { "label": "phpMyAdmin", "onAutoForward": "notify" }
+  },
+  "forwardPorts": [8080, 8081],
+  "postCreateCommand": "bash -lc 'if [ -f composer.json ]; then composer install --no-interaction --prefer-dist; fi'"
+}
