@@ -6,9 +6,7 @@ services:
 
     volumes:
       - ..:/workspace
-      - node_modules:/workspace/node_modules
-      - codex_state:/root/.codex
-      - codex_cli:/opt/codex
+      - codex_data:/root/.codex
       - agent_skills:/root/.agents
       - git_config:/root/.config/git
 
@@ -17,7 +15,6 @@ services:
 
     environment:
       REDIS_URL: redis://redis:6379
-      CODEX_HOME: /root/.codex
       GIT_CONFIG_GLOBAL: /root/.config/git/config
       CI_ENVIRONMENT: development
       app.baseURL: http://localhost:${PORT:-8080}/
@@ -87,9 +84,7 @@ services:
         condition: service_healthy
 
 volumes:
-  node_modules:
-  codex_state:
-  codex_cli:
+  codex_data:
   agent_skills:
   git_config:
   mysql_data:

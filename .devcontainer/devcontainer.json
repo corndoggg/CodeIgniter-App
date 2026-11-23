@@ -4,10 +4,6 @@
   "service": "app",
   "workspaceFolder": "/workspace",
   "remoteUser": "root",
-  "remoteEnv": {
-    "CODEX_HOME": "/root/.codex",
-    "PATH": "/opt/codex/bin:/workspace/node_modules/.bin:${containerEnv:PATH}"
-  },
   "customizations": {
     "vscode": {
       "extensions": [

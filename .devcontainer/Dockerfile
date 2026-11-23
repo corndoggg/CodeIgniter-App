@@ -15,8 +15,6 @@ RUN apk add --no-cache \
     libxml2-dev \
     libzip-dev \
     make \
-    nodejs \
-    npm \
     oniguruma-dev \
     pkgconf \
     sqlite-dev \
@@ -32,9 +30,6 @@ RUN docker-php-ext-install -j"$(nproc)" \
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 RUN git config --system --add safe.directory '*'
-
-ENV CODEX_HOME=/root/.codex
-ENV PATH="/opt/codex/bin:${PATH}"
 
 WORKDIR /workspace
 
