@@ -8,13 +8,13 @@
 	<meta name="author" content="">
 	
 	<!-- ================== BEGIN core-css ================== -->
-	<link href="assets/css/vendor.min.css" rel="stylesheet">
-	<link href="assets/css/app.min.css" rel="stylesheet">
+	<link href="<?= base_url('assets/css/vendor.min.css') ?>" rel="stylesheet">
+	<link href="<?= base_url('assets/css/app.min.css') ?>" rel="stylesheet">
 	<!-- ================== END core-css ================== -->
 	
 	<!-- ================== BEGIN page-css ================== -->
-	<link href="assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet">
-	<link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+	<link href="<?= base_url('assets/plugins/jvectormap-next/jquery-jvectormap.css') ?>" rel="stylesheet">
+	<link href="<?= base_url('assets/plugins/bootstrap-daterangepicker/daterangepicker.css') ?>" rel="stylesheet">
 	<!-- ================== END page-css ================== -->
 
 </head>
@@ -134,7 +134,7 @@
 				<div class="menu-item dropdown dropdown-mobile-full">
 					<a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
 						<div class="menu-img online">
-							<span class="menu-img-bg" style="background-image: url(assets/img/user/user.jpg)"></span>
+							<span class="menu-img-bg" style="background-image: url(<?= base_url('assets/img/user/user.jpg') ?>)"></span>
 						</div>
 						<div class="menu-text d d-none">username@account.com</div>
 					</a>
@@ -176,7 +176,7 @@
 						<a href="javascript:;" class="menu-profile-link" data-bs-toggle="dropdown">
 							<div class="menu-profile-cover with-shadow"></div>
 							<div class="menu-profile-image">
-								<div class="menu-profile-img" style="background-image: url(assets/img/user/user.jpg)"></div>
+								<div class="menu-profile-img" style="background-image: url(<?= base_url('assets/img/user/user.jpg') ?>)"></div>
 							</div>
 							<div class="menu-profile-info">
 								<div class="d-flex align-items-center">
@@ -264,7 +264,7 @@
 					<a href="#" class="btn btn-outline-primary mb-1">Add User</a>
 				</div>
 				<div class="hljs-container rounded-bottom">
-					<pre><code class="xml hljs language-xml" data-url="assets/data/table-elements/code-6.json" data-highlighted="yes"></code></pre>
+					<pre><code class="xml hljs language-xml" data-url="<?= base_url('assets/data/table-elements/code-6.json') ?>" data-highlighted="yes"></code></pre>
 				</div>
 			</div>
 		</div>
@@ -321,17 +321,17 @@
 	<!-- END #app -->
 	
 	<!-- ================== BEGIN core-js ================== -->
-	<script src="assets/js/vendor.min.js"></script>
-	<script src="assets/js/app.min.js"></script>
+	<script src="<?= base_url('assets/js/vendor.min.js') ?>"></script>
+	<script src="<?= base_url('assets/js/app.min.js') ?>"></script>
 	<!-- ================== END core-js ================== -->
 	
 	<!-- ================== BEGIN page-js ================== -->
-	<script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
-	<script src="assets/plugins/jvectormap-content/world-mill.js"></script>
-	<script src="assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
-	<script src="assets/plugins/moment/min/moment.min.js"></script>
-	<script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script src="assets/js/demo/dashboard.demo.js"></script>
+	<script src="<?= base_url('assets/plugins/jvectormap-next/jquery-jvectormap.min.js') ?>"></script>
+	<script src="<?= base_url('assets/plugins/jvectormap-content/world-mill.js') ?>"></script>
+	<script src="<?= base_url('assets/plugins/apexcharts/dist/apexcharts.min.js') ?>"></script>
+	<script src="<?= base_url('assets/plugins/moment/min/moment.min.js') ?>"></script>
+	<script src="<?= base_url('assets/plugins/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
+	<script src="<?= base_url('assets/js/demo/dashboard.demo.js') ?>"></script>
 	<!-- ================== END page-js ================== -->
 	
 </body>

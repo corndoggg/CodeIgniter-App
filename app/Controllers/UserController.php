@@ -10,7 +10,12 @@ class UserController extends BaseController
 {
     public function index()
     {
-        $userModel = new UserModel();
-        dd($userModel->findAll());
+        //$userModel = new UserModel();
+        //dd($userModel->findAll());
+        return view('user/index');
+    }
+
+    public function add(){
+        
     }
 }
