@@ -5,6 +5,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
 
     volumes:
+      - node_modules:/workspace/node_modules
       - ..:/workspace
       - codex_data:/root/.codex
       - agent_skills:/root/.agents
@@ -84,6 +85,7 @@ services:
         condition: service_healthy
 
 volumes:
+  node_modules:
   codex_data:
   agent_skills:
   git_config:

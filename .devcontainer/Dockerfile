@@ -9,6 +9,8 @@ RUN apk add --no-cache \
     g++ \
     gcc \
     git \
+    nodejs \
+    npm \
     icu-dev \
     libcurl \
     libpng-dev \
@@ -34,5 +36,3 @@ RUN git config --system --add safe.directory '*'
 WORKDIR /workspace
 
 EXPOSE 8080
-
-CMD ["sleep", "infinity"]
